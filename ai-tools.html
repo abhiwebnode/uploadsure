@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script>(function(){try{var t=localStorage.getItem("uploadsure-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<script src="js/cookie-consent.js"></script>
+<!-- ═══════════════════════════════════════════════
+     CORE
+═══════════════════════════════════════════════ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Background Remover & Face Blur — Free, Private, In-Browser | UploadSure</title>
+<meta name="description" content="Remove image backgrounds, blur faces automatically, create passport photos, and composite people into any scene — AI models run entirely in your browser, nothing uploaded.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.uploadsure.in/ai-tools.html">
+<!-- ═══════════════════════════════════════════════
+     OPEN GRAPH
+═══════════════════════════════════════════════ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UploadSure">
+<meta property="og:title" content="AI Background Remover & Face Blur — Free, Private, In-Browser | UploadSure">
+<meta property="og:description" content="Remove backgrounds, blur faces automatically, create passport photos — AI models run entirely in your browser, nothing uploaded.">
+<meta property="og:url" content="https://www.uploadsure.in/ai-tools.html">
+<meta property="og:image" content="https://www.uploadsure.in/assets/og/ai-tools.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI background remover and face blur — free, runs in browser">
+<meta property="og:locale" content="en_IN">
+<!-- ═══════════════════════════════════════════════
+     TWITTER / X CARD
+═══════════════════════════════════════════════ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@uploadsure">
+<meta name="twitter:title" content="AI Background Remover & Face Blur — Free | UploadSure">
+<meta name="twitter:description" content="Remove backgrounds, blur faces automatically, make passport photos — AI runs in your browser, nothing uploaded.">
+<meta name="twitter:image" content="https://www.uploadsure.in/assets/og/ai-tools.webp">
+<!-- ═══════════════════════════════════════════════
+     FAVICON & THEME
+═══════════════════════════════════════════════ -->
+<link rel="icon" type="image/x-icon" href="/assets/logo/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#134A72">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="UploadSure">
+<!-- ═══════════════════════════════════════════════
+     HREFLANG
+═══════════════════════════════════════════════ -->
+<link rel="alternate" hreflang="en-IN" href="https://www.uploadsure.in/ai-tools.html">
+<link rel="alternate" hreflang="en" href="https://www.uploadsure.in/ai-tools.html">
+<link rel="alternate" hreflang="x-default" href="https://www.uploadsure.in/ai-tools.html">
+<!-- ═══════════════════════════════════════════════
+     PRECONNECT / PRELOAD
+═══════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="stylesheet" href="styles.css">
+<!-- ═══════════════════════════════════════════════
+     JSON-LD SCHEMA
+═══════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.uploadsure.in/ai-tools.html#webpage",
+      "url": "https://www.uploadsure.in/ai-tools.html",
+      "name": "AI Background Remover & Face Blur — Free, Private, In-Browser | UploadSure",
+      "description": "Remove image backgrounds, blur faces automatically, create passport photos — AI models run entirely in your browser.",
+      "isPartOf": { "@id": "https://www.uploadsure.in/#website" },
+      "inLanguage": "en-IN",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.uploadsure.in/" },
+          { "@type": "ListItem", "position": 2, "name": "AI Tools", "item": "https://www.uploadsure.in/ai-tools.html" }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "UploadSure AI Tools",
+      "url": "https://www.uploadsure.in/ai-tools.html",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any (runs in browser)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "featureList": [
+        "AI background remover — U2-Net neural model",
+        "Automatic face blur and anonymizer",
+        "Passport and ID photo maker",
+        "Object remover with OpenCV inpainting",
+        "Photo composite — place person on any background"
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the AI background remover work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI Background Remover uses U2-Net, a neural segmentation model that runs entirely in your browser via ONNX Runtime Web. The model (~4.7 MB) downloads on first use and is cached — no file is ever sent to any server. It works on people, products, complex hair, and transparent objects, unlike simple colour-sampling tools that only work on plain backgrounds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI background remover free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — completely free with no account required. The neural model runs in your browser. The only cost is a one-time ~4.7 MB model download on first use, after which it is cached and works instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make a passport photo online for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Passport and ID Photo Maker on this page. Upload any photo — the background is removed automatically using a neural model, replaced with your chosen background colour, and the image is cropped to the exact spec for your country (India, US, UK, EU/Schengen, Canada, Australia, China, Japan). Everything runs in your browser and is free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the face blur detect multiple faces automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Face Blur tool uses the UltraFace model to automatically detect every face in a photo, including in group photos. All detected faces are blurred in one step — you do not need to draw boxes manually. The model is 1.2 MB, downloads once, and is cached for future use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my photos safe when using these AI tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All AI processing happens entirely in your browser using ONNX Runtime Web and the Canvas API. Your photos are never uploaded to any server. You can verify this yourself: open browser DevTools (F12), go to the Network tab, and upload a file — you will see zero outbound file requests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the AI object remover work on all backgrounds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Object Remover uses OpenCV inpainting (Navier-Stokes and Telea algorithms) with mask dilation and seam feathering. It works best on textured backgrounds like grass, walls, sky, and concrete. For very large objects or backgrounds with complex repeated patterns, results may be imperfect — this is an honest limitation of browser-based inpainting without a neural model."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <a href="/" class="logo-link" aria-label="UploadSure home">
+        <img src="assets/logo/logo.png" alt="UploadSure" class="logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mark',ariaHidden:'true'}))">
+      </a>
+    </div>
+	<nav>
+	  <!-- Global search -->
+		<div class="search-bar" id="searchBar" role="search">
+		  <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+		  <input type="search" id="searchInput" placeholder="Search tools or portals…" autocomplete="off" aria-label="Search tools and portal specs" spellcheck="false">
+		  <kbd class="search-hint" aria-hidden="true">/</kbd>
+		  <div class="search-results" id="searchResults" role="listbox" aria-live="polite"></div>
+		</div>
+	  <!-- Global search -->
+	  <div class="nav-links-wrapper">
+		<a href="application-pack.html">Portal Tools</a>
+		<a href="image-tools.html">Image Tools</a>
+		<a href="ai-tools.html">AI Tools</a>
+		<a href="pdf-tools.html">PDF Tools</a>
+	  </div>
+	  
+	  <button class="toggle" id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode"></button>
+	</nav>
+  </div>
+</header>
+<main>
+<div class="wrap">
+  <section class="block">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <div>
+        <h1>Free AI Image Tools</h1>
+        <p>Neural models running entirely in your browser — nothing is uploaded to any server. First use downloads the model; after that it's cached and instant.</p>
+      </div>
+    </div>
+
+    <div class="jump">
+      <a href="#t-ai-bg">Background Remover</a>
+      <a href="#t-ai-face">Face Blur</a>
+      <a href="#t-passport">Passport Photo</a>
+      <a href="#t-obj-remove">Object Remover</a>
+      <a href="#t-composite">Photo Composite</a>
+    </div>
+<h2 class="sr-only">Our AI Utilities</h2>
+    <div class="tools">
+
+      <!-- ── AI: Background Remover ── -->
+      <div class="card tool" id="t-ai-bg">
+        <div class="tool-head">
+          <span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M15 9l-6 6M9 9l6 6"/></svg></span>
+          <h3>AI Background Remover</h3>
+        </div>
+        <p class="desc">Remove any background — people, products, objects — using a neural segmentation model running entirely in your browser. Takes a few extra seconds on first use.</p>
+        <p class="note-inline" id="aiBgStatus"></p>
+        <label class="mini-drop" id="aiBgDrop">Drop or choose an image<input type="file" id="aiBgFile" accept="image/*"></label>
+        <div class="tool-out" id="aiBgOut"></div>
+      </div>
+
+      <!-- ── AI: Face Blur & Anonymizer ── -->
+      <div class="card tool" id="t-ai-face">
+        <div class="tool-head">
+          <span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M9 8h.01M15 8h.01"/></svg></span>
+          <h3>Face Blur &amp; Anonymizer</h3>
+        </div>
+        <p class="desc">Automatically detects every face in a photo and blurs it. Great for anonymising group photos, screenshots, or any image before sharing publicly. Takes a few extra seconds on first use.</p>
+        <div class="controls">
+          <div class="field"><label>Blur strength</label><input type="range" id="faceBlurRadius" min="8" max="40" value="18"></div>
+        </div>
+        <p class="note-inline" id="faceBlurAiStatus"></p>
+        <label class="mini-drop" id="faceBlurAiDrop">Drop or choose an image<input type="file" id="faceBlurAiFile" accept="image/*"></label>
+        <div class="tool-out" id="faceBlurAiOut"></div>
+      </div>
+
+      <!-- ── Passport & ID Photo Maker ── -->
+      <div class="card tool" id="t-passport">
+        <div class="tool-head">
+          <span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="9" r="3"/><path d="M6 20c0-3 2.7-5 6-5s6 2 6 5"/></svg></span>
+          <h3>Passport &amp; ID Photo Maker</h3>
+        </div>
+        <p class="desc">Upload any photo — the background is removed automatically, replaced with your chosen colour, and cropped to the correct passport spec.</p>
+        <div class="controls">
+          <div class="field">
+            <label>Country / spec</label>
+            <select id="passportSpec" style="font-family:var(--font-body);font-size:13px;padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text)"></select>
+          </div>
+          <div class="field"><label>Background colour</label><input type="color" id="passportBg" value="#ffffff"></div>
+        </div>
+        <p class="note-inline" id="passportStatus"></p>
+        <label class="mini-drop" id="passportDrop">Drop or choose a photo<input type="file" id="passportFile" accept="image/*"></label>
+        <div class="tool-out" id="passportOut"></div>
+      </div>
+
+      <!-- ── Object Remover (content-aware fill) ── -->
+      <div class="card tool" id="t-obj-remove">
+        <div class="tool-head">
+          <span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/><path d="M9 6v12"/></svg></span>
+          <h3>Object Remover</h3><span class="tag">Content-aware fill</span>
+        </div>
+        <p class="desc">Paint over an object with the brush, then click Fill. Uses canvas patch-matching to blend surrounding pixels — works well on textured backgrounds (walls, ground, sky). Not neural AI.</p>
+        <div class="controls obj-remove-controls" id="objRemoveControls" style="display:none">
+          <div class="field"><label>Brush — <span id="objBrushVal">24px</span></label><input type="range" id="objBrushSize" min="6" max="80" value="24"></div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <button class="btn sm" id="objRemoveClear">Clear mask</button>
+            <button class="btn primary sm" id="objRemoveFill">Fill selected area</button>
+          </div>
+        </div>
+        <label class="mini-drop" id="objRemoveDrop">Drop or choose an image<input type="file" id="objRemoveFile" accept="image/*"></label>
+        <canvas id="objRemoveCanvas" style="display:none;max-width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);touch-action:none"></canvas>
+        <div class="tool-out" id="objRemoveOut"></div>
+      </div>
+
+      <!-- ── Photo Composite ── -->
+      <div class="card tool" id="t-composite" style="grid-column:1/-1">
+        <div class="tool-head">
+          <span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="2.5"/><path d="M21 15l-5-5-4 4-2-2-4 4"/></svg></span>
+          <h3>Photo Composite</h3>
+        </div>
+        <p class="desc">Place yourself (or anyone) into any background. Upload your photo — background is removed automatically — then drop in any scene. Drag to reposition, use corner handles to resize.</p>
+        <p id="compositeStatus" class="note-inline" style="margin-bottom:6px"></p>
+
+        <!-- Two-step upload row -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px" id="compositeStep1wrap">
+          <div id="compositeStep1">
+            <p style="margin:0 0 8px;font-size:12.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Step 1 — Your photo</p>
+            <label class="mini-drop" id="compositeDrop1" style="margin-bottom:8px">Drop or choose your photo<input type="file" id="compositeFile1" accept="image/*"></label>
+            <p style="margin:0 0 4px;font-size:12px;color:var(--text-faint)">Background will be removed automatically. Takes a few extra seconds on first use.</p>
+            <div class="tool-out" id="compositeOut1" style="margin:0"></div>
+          </div>
+          <div id="compositeStep2">
+            <p style="margin:0 0 8px;font-size:12.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Step 2 — Background scene</p>
+            <label class="mini-drop" id="compositeDrop2" style="margin-bottom:8px">Drop or choose a background image<input type="file" id="compositeFile2" accept="image/*"></label>
+            <p style="margin:0 0 4px;font-size:12px;color:var(--text-faint)">Any photo, gradient, or graphic. The scene your photo will be placed into.</p>
+            <div class="tool-out" id="compositeOut2" style="margin:0"></div>
+          </div>
+        </div>
+
+        <!-- Editor (shown after both images loaded) -->
+        <div id="compositeEditor" style="display:none">
+          <div class="controls" style="margin-bottom:12px">
+            <div class="field"><label>Initial fit</label>
+              <div class="seg">
+                <button id="compositeFitHeight">Fill height</button>
+                <button id="compositeFitWidth">Fill width</button>
+                <button id="compositeFitCustom" class="on">50% size</button>
+              </div>
+            </div>
+          </div>
+          <p style="margin:0 0 8px;font-size:12.5px;color:var(--text-muted)">Drag to move · Corner handles to resize (locked aspect) · Edge handles to stretch</p>
+          <canvas id="compositeCanvas" style="display:none;max-width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);touch-action:none;cursor:default"></canvas>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <button class="btn primary sm" id="compositeExport">Download composite</button>
+          </div>
+          <div class="tool-out" id="compositeOut" style="margin-top:10px"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+</main>
+
+<!-- ═══ RELATED TOOLS — internal linking for SEO ═══ -->
+<section class="related-tools-section" aria-labelledby="ai-related-heading">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:28px">
+      <h2 id="ai-related-heading" style="font-size:22px;margin:0">More Tools on UploadSure</h2>
+      <p style="margin:8px 0 0;color:var(--text-muted);font-size:14px">All tools run in your browser — files never leave your device.</p>
+    </div>
+    <div class="related-tools-grid">
+
+      <a href="application-pack.html" class="related-tool-card">
+        <span class="related-tool-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        </span>
+        <div>
+          <strong>Application Pack</strong>
+          <p>Fix photo and signature to the exact portal spec for SSC, UPSC, IBPS, NEET, JEE, PAN, and Bank KYC.</p>
+        </div>
+      </a>
+
+      <a href="image-tools.html#t-compress" class="related-tool-card">
+        <span class="related-tool-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </span>
+        <div>
+          <strong>Compress Image</strong>
+          <p>Reduce any photo to a target KB limit — useful after background removal for portal upload requirements.</p>
+        </div>
+      </a>
+
+      <a href="image-tools.html#t-resize" class="related-tool-card">
+        <span class="related-tool-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </span>
+        <div>
+          <strong>Resize Image</strong>
+          <p>Set exact pixel dimensions for any portal spec not covered by the Passport Photo Maker.</p>
+        </div>
+      </a>
+
+      <a href="image-tools.html#t-convert" class="related-tool-card">
+        <span class="related-tool-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M20 20v-6h-6M20 8a8 8 0 00-14.9-2M4 16a8 8 0 0014.9 2"/></svg>
+        </span>
+        <div>
+          <strong>Convert Format</strong>
+          <p>Convert PNG or WebP to JPG — many portals only accept JPG and reject other formats silently.</p>
+        </div>
+      </a>
+
+      <a href="pdf-tools.html#t-pdfcompress" class="related-tool-card">
+        <span class="related-tool-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        </span>
+        <div>
+          <strong>Compress PDF</strong>
+          <p>Shrink certificates, marksheets, and scanned ID documents to meet portal upload limits.</p>
+        </div>
+      </a>
+
+      <a href="image-tools.html#t-device" class="related-tool-card">
+        <span class="related-tool-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </span>
+        <div>
+          <strong>Screenshot Studio</strong>
+          <p>Place your app screenshot inside a device frame — iPhone, Android, MacBook, or Browser — with gradient backgrounds.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ — matches FAQPage JSON-LD schema exactly ═══ -->
+<section class="faq-section" aria-labelledby="faq-ai-heading">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:28px">
+      <h2 id="faq-ai-heading">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+
+      <details class="faq-item" open>
+        <summary class="faq-q">How does the AI background remover work?</summary>
+        <div class="faq-a">
+          <p>The <a href="#t-ai-bg">AI Background Remover</a> uses U²-Net, a neural segmentation model that runs entirely in your browser via ONNX Runtime Web. The model (~4.7 MB) downloads on first use and is cached — no file is ever sent to any server. It works on people, products, complex hair, and transparent objects, unlike simple colour-sampling tools that only work on plain backgrounds.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Is the AI background remover free?</summary>
+        <div class="faq-a">
+          <p>Yes — completely free with no account required. The neural model runs in your browser. The only cost is a one-time ~4.7 MB model download on first use, after which it is cached and works instantly for every subsequent image.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How do I make a passport photo online for free?</summary>
+        <div class="faq-a">
+          <p>Use the <a href="#t-passport">Passport &amp; ID Photo Maker</a> on this page. Upload any photo — the background is removed automatically, replaced with your chosen background colour, and the image is cropped to the exact spec for your country (India, US, UK, EU/Schengen, Canada, Australia, China, Japan). Everything runs in your browser and is free.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Can the face blur detect multiple faces automatically?</summary>
+        <div class="faq-a">
+          <p>Yes. The <a href="#t-ai-face">Face Blur</a> tool uses the UltraFace model to automatically detect every face in a photo, including group photos. All detected faces are blurred in one step — no need to draw boxes manually. The model is 1.2 MB, downloads once, and is cached for future use.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Are my photos safe when using these AI tools?</summary>
+        <div class="faq-a">
+          <p>Yes. All AI processing happens entirely in your browser using ONNX Runtime Web and the Canvas API. Your photos are never uploaded to any server. You can verify this: open browser DevTools (F12), go to the Network tab, and upload a file — you will see zero outbound file requests.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Does the AI object remover work on all backgrounds?</summary>
+        <div class="faq-a">
+          <p>The <a href="#t-obj-remove">Object Remover</a> uses OpenCV inpainting (Navier-Stokes and Telea algorithms) with mask dilation and seam feathering. It works best on textured backgrounds like grass, walls, sky, and concrete. For very large objects or complex repeated patterns, results may be imperfect — this is an honest limitation of browser-based inpainting without a large neural model.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="font-size:17px;margin-bottom:10px">
+          <a href="/" class="logo-link" aria-label="UploadSure home">
+            <img src="assets/logo/logo.png" alt="UploadSure" class="logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mark',ariaHidden:'true'}))">
+          </a>
+        </div>
+        <p style="margin:0;max-width:38ch">The gap between "your file" and "a file this portal accepts" — closed. Built for the person who's been rejected four times and just wants it done.</p>
+      </div>
+      <div>
+        <h4>What's real vs. best-effort</h4>
+        <p style="margin:0">Compress, resize, crop, convert, rotate, watermark, merge and split are genuine operations, not approximations. Upscale, background removal and face blur are labelled honestly as best-effort — we won't dress up a filter as AI.</p>
+      </div>
+      <div>
+        <h4>Runs on your device</h4>
+        <p style="margin:0">Every operation happens in your browser — photos, signatures, scans and PDFs are never uploaded anywhere. Handy for cyber cafés and CSCs processing applicants back to back.</p>
+      </div>
+    </div>
+    <div class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <p class="fine">UploadSure does not guarantee acceptance by any third-party portal — specs are provided as a best-effort aid; always confirm against the official notification for your application. Press <span class="kbd">D</span> to toggle theme.</p>
+  </div>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="js/utils.js"></script>
+<script src="js/pwa-install.js"></script>
+<script src="js/worker-client.js"></script>
+<script src="js/image-ai-tools.js"></script>
+<script>
+initThemeToggle();
+initPwaInstall();
+initScrollToTop();
+initAiBgRemoverTool();
+initFaceBlurAiTool();
+initPassportPhotoTool();
+initObjectRemoverTool();
+initPhotoCompositeTool();
+</script>
+<script src="js/search.js"></script>
+</body>
+</html>
