@@ -1163,3 +1163,16 @@ header.scrolled {
     transition: none !important;
   }
 }
+/* ══════════════════════════════════════════════════════
+   OG IMAGE GENERATOR — mobile layout fix
+   The card uses inline styles with a 2-column grid that
+   crushes the canvas preview on mobile. Stack them below
+   680px so both halves get full width.
+══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  /* Override the inline grid-template-columns: 1fr 1fr */
+  #t-og > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
