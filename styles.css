@@ -1176,3 +1176,37 @@ header.scrolled {
     gap: 24px !important;
   }
 }
+/* ══════════════════════════════════════════════════════
+   HERO ANIMATION — mobile fit
+   Shrinks the demo section so it fits inside small screens
+   with margin to spare, without breaking the layout.
+   Paste at the bottom of styles.css.
+══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .demo-wrap {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0 8px;
+  }
+  .demo-stage {
+    gap: 12px;
+    min-height: 220px;
+  }
+  .demo-card { padding: 12px 10px 10px; gap: 8px; }
+  .demo-photo { width: 108px; height: 130px; }
+  .demo-photo-sm { width: 72px; height: 87px; }
+  .demo-label { font-size: 9.5px; padding: 2px 7px; }
+  .demo-meta { font-size: 10px; }
+  .demo-arrow { flex-shrink: 0; }
+  .demo-arrow svg { width: 34px; height: 18px; }
+  .demo-stamp { font-size: 10.5px; padding: 3px 7px; }
+  .demo-spec-pill { font-size: 11px; padding: 5px 12px; }
+  .demo-caption { font-size: 10.5px; padding: 0 12px; text-align: center; }
+}
+
+@media (max-width: 400px) {
+  .demo-photo { width: 96px; height: 116px; }
+  .demo-photo-sm { width: 64px; height: 77px; }
+  .demo-stage { gap: 8px; }
+  .demo-arrow svg { width: 28px; height: 14px; }
+}
