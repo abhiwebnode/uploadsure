@@ -1076,8 +1076,22 @@ header {
   top: 0;
   z-index: 100;
   transition: box-shadow .25s ease, background-color .25s ease;
+  /* IMPORTANT: no backdrop-filter here — it would create a containing
+     block for the fixed mobile dropdown panel and pin it inside the header.
+     Blur is applied via ::before instead. */
+}
+/* Blur is applied to a pseudo-element behind the content — this way
+   the header does NOT become a containing block for position:fixed
+   descendants like the mobile dropdown bottom sheet. */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   backdrop-filter: saturate(180%) blur(8px);
   -webkit-backdrop-filter: saturate(180%) blur(8px);
+  pointer-events: none;
+  transition: background-color .25s ease;
 }
 
 /* When scrolled — shrunken state */
