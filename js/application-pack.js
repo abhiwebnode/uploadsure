@@ -575,7 +575,39 @@ function initApplicationPack() {
           (c) => c.status === "warn"
         );
 
+      // ── Regret-Free Guarantee: prominent pass/warn summary above the checklist ──
+      const okChecks = checks.filter(c => c.status === "ok");
+      const warnChecks = checks.filter(c => c.status === "warn");
+      const allPassed = warnChecks.length === 0;
+
+      const rfgIcon = allPassed
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M20 6L9 17l-5-5"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L2 18a2 2 0 001.7 3h16.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>';
+
+      const tinyTick = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><path d="M20 6L9 17l-5-5"/></svg>';
+      const tinyAlert = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="10"/></svg>';
+
+      const rfgTitle = allPassed
+        ? ("Regret-Free — this file will pass " + portalNameForSummary())
+        : ("Almost there — " + warnChecks.length + " item" + (warnChecks.length > 1 ? "s" : "") + " to check before you upload");
+
+      const rfgBadges =
+        okChecks.map(c => '<span class="rfg-badge rfg-badge-ok">' + tinyTick + c.label + '</span>').join("") +
+        warnChecks.map(c => '<span class="rfg-badge rfg-badge-warn">' + tinyAlert + c.label + '</span>').join("");
+
+      const rfgSummary = `
+        <div class="rfg-summary ${allPassed ? "rfg-pass" : "rfg-warn"}">
+          <div class="rfg-icon">${rfgIcon}</div>
+          <div class="rfg-content">
+            <strong class="rfg-title">${rfgTitle}</strong>
+            <div class="rfg-badges">${rfgBadges}</div>
+          </div>
+        </div>
+      `;
+
       resultEl.innerHTML = `
+        ${rfgSummary}
+
         <div class="preview">
           <div class="preview-thumb">
             <img
@@ -602,6 +634,11 @@ function initApplicationPack() {
             Saved as ${spec.key}_${spec.width}x${spec.height}.${FORMAT_EXTENSIONS[spec.mimeType]}
           </span>
         </div>
+
+        <div class="rfg-help">
+          Portal rejected a file that passed here?
+          <a href="fix-rejection.html">Get help fixing the rejection →</a>
+        </div>
       `;
 
       resultEl.classList.add("show");
@@ -626,6 +663,15 @@ function initApplicationPack() {
         "Could not read that file — try a JPG or PNG"
       );
     }
+  }
+
+
+
+  function portalNameForSummary() {
+    const p = PORTAL_SPECS.find(x => x.id === selectedPortalId);
+    if (!p) return "the portal";
+    // "SSC — CGL, CHSL, MTS, GD" → "SSC" ; "NTA NEET UG" → "NEET UG"
+    return p.name.split(" — ")[0].replace(/^NTA /, "");
   }
 
 
@@ -737,4 +783,4 @@ function initApplicationPack() {
       "Opening your email app…"
     );
   };
-}
+}
