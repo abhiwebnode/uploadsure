@@ -1,0 +1,230 @@
+{
+  "_meta": {
+    "version": "2026-11-03",
+    "note": "Specs gathered from 2026 notices via coaching/aggregator sites + official pages where found. 'confidence: verify' = sources conflict or no official copy found; check the official PDF before publishing that page.",
+    "fields": {
+      "mode": "exact = portal rejects any other px size | preferred = notice says 'preferred', use these px | range = any px within min/max | none = notice gives no px, we pick a sensible size",
+      "targetKB": "What the tool should aim for. Chosen inside the overlap of all conflicting sources so the file passes either way."
+    }
+  },
+  "exams": [
+    {
+      "slug": "ssc-cgl-signature",
+      "name": "SSC CGL",
+      "category": "SSC",
+      "portal": "ssc.gov.in",
+      "livePhoto": true,
+      "docs": {
+        "signature": { "format": "jpg", "minKB": 10, "maxKB": 20, "targetKB": 16, "width": 472, "height": 157, "mode": "none", "notes": "Notice: ~6.0 x 2.0 cm, black ink, no CAPITALS. Some sites say 4.0x2.0 cm / 140x60 px; KB range is the hard check." }
+      },
+      "confidence": "high",
+      "pageNote": "Photo is captured live on the portal - page should say so and only offer the signature tool."
+    },
+    {
+      "slug": "ssc-chsl-signature",
+      "name": "SSC CHSL / MTS / GD",
+      "category": "SSC",
+      "portal": "ssc.gov.in",
+      "livePhoto": true,
+      "docs": {
+        "signature": { "format": "jpg", "minKB": 10, "maxKB": 20, "targetKB": 16, "width": 472, "height": 157, "mode": "none", "notes": "Same signature rule as CGL." }
+      },
+      "confidence": "high"
+    },
+    {
+      "slug": "upsc-cse-photo-signature",
+      "name": "UPSC Civil Services (IAS)",
+      "category": "UPSC",
+      "portal": "upsconline.nic.in",
+      "livePhoto": true,
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 20, "maxKB": 200, "targetKB": 80, "width": 413, "height": 531, "mode": "none", "notes": "Face ~3/4 of frame, file named photo.jpg. Live photo also captured and matched to this." },
+        "signature": { "format": "jpg", "minKB": 20, "maxKB": 100, "targetKB": 50, "width": 400, "height": 500, "mode": "range", "pxRange": [350, 500], "notes": "THREE signatures stacked on one white sheet, black ink, named signature.jpg." },
+        "photoId": { "format": "jpg", "minKB": 20, "maxKB": 200, "targetKB": 100, "mode": "none", "notes": "Only if Aadhaar auth not done." }
+      },
+      "confidence": "high"
+    },
+    {
+      "slug": "upsc-nda-cds-photo-signature",
+      "name": "UPSC NDA / CDS / CAPF",
+      "category": "UPSC",
+      "portal": "upsconline.nic.in",
+      "livePhoto": true,
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 20, "maxKB": 200, "targetKB": 80, "width": 413, "height": 531, "mode": "none" },
+        "signature": { "format": "jpg", "minKB": 20, "maxKB": 100, "targetKB": 50, "width": 400, "height": 500, "mode": "range", "pxRange": [350, 500], "notes": "Three signatures, same as CSE." }
+      },
+      "confidence": "high"
+    },
+    {
+      "slug": "ibps-po-photo-signature",
+      "name": "IBPS PO",
+      "category": "Banking",
+      "portal": "ibps.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 20, "maxKB": 50, "targetKB": 35, "width": 200, "height": 230, "mode": "preferred" },
+        "signature": { "format": "jpg", "minKB": 10, "maxKB": 20, "targetKB": 15, "width": 140, "height": 60, "mode": "preferred", "notes": "No CAPITALS." },
+        "thumb": { "format": "jpg", "minKB": 20, "maxKB": 50, "targetKB": 35, "width": 240, "height": 240, "dpi": 200, "mode": "preferred", "notes": "Left thumb, black/blue ink on white." },
+        "declaration": { "format": "jpg", "minKB": 50, "maxKB": 100, "targetKB": 75, "width": 800, "height": 400, "dpi": 200, "mode": "preferred", "notes": "Handwritten in English, no CAPITALS." }
+      },
+      "confidence": "high"
+    },
+    {
+      "slug": "ibps-clerk-photo-signature",
+      "name": "IBPS Clerk",
+      "category": "Banking",
+      "portal": "ibps.in",
+      "sameAs": "ibps-po-photo-signature",
+      "confidence": "high"
+    },
+    {
+      "slug": "ibps-rrb-photo-signature",
+      "name": "IBPS RRB (PO & Clerk)",
+      "category": "Banking",
+      "portal": "ibps.in",
+      "sameAs": "ibps-po-photo-signature",
+      "confidence": "high"
+    },
+    {
+      "slug": "sbi-po-photo-signature",
+      "name": "SBI PO",
+      "category": "Banking",
+      "portal": "sbi.co.in/careers",
+      "sameAs": "ibps-po-photo-signature",
+      "confidence": "high"
+    },
+    {
+      "slug": "sbi-clerk-photo-signature",
+      "name": "SBI Clerk (Junior Associate)",
+      "category": "Banking",
+      "portal": "sbi.co.in/careers",
+      "sameAs": "ibps-po-photo-signature",
+      "confidence": "high"
+    },
+    {
+      "slug": "rbi-grade-b-photo-signature",
+      "name": "RBI Grade B",
+      "category": "Banking",
+      "portal": "rbi.org.in",
+      "sameAs": "ibps-po-photo-signature",
+      "confidence": "medium",
+      "pageNote": "Notice gives KB only for thumb/declaration; px copied from IBPS spec."
+    },
+    {
+      "slug": "rrb-ntpc-signature",
+      "name": "RRB NTPC / ALP / Technician / Group D",
+      "category": "Railway",
+      "portal": "rrbapply.gov.in",
+      "livePhoto": true,
+      "docs": {
+        "signature": { "format": "jpg", "minKB": 30, "maxKB": 49, "targetKB": 40, "width": 280, "height": 120, "minWidth": 140, "minHeight": 60, "dpi": 100, "mode": "min", "notes": "Unusual: MIN 30 KB. Most tools output too small - tool must pad/raise quality to hit 30+." }
+      },
+      "confidence": "high",
+      "pageNote": "Live photo capture since 2026 CENs. 30-49 KB signature is a strong SEO hook - most generic compressors fail it."
+    },
+    {
+      "slug": "neet-ug-photo-signature",
+      "name": "NEET UG",
+      "category": "NTA",
+      "portal": "neet.nta.nic.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 10, "maxKB": 200, "targetKB": 80, "width": 413, "height": 531, "mode": "none", "notes": "Passport size, white bg, ~80% face incl. ears, taken after 1 Jan of exam year." },
+        "postcardPhoto": { "format": "jpg", "minKB": 10, "maxKB": 200, "targetKB": 120, "width": 800, "height": 1200, "mode": "none", "notes": "4x6 inch, name + date printed below." },
+        "signature": { "format": "jpg", "minKB": 10, "maxKB": 30, "targetKB": 20, "width": 400, "height": 150, "mode": "none", "notes": "2026 bulletin reportedly 10-100 KB; older/other sources 4-30 KB. 10-30 window passes both." },
+        "thumb": { "format": "jpg", "minKB": 50, "maxKB": 200, "targetKB": 100, "width": 1200, "height": 800, "mode": "none", "notes": "Left & right hand fingers + thumb impressions. Sources say 10-200 or 50-200; target 100 passes both." }
+      },
+      "confidence": "verify"
+    },
+    {
+      "slug": "jee-main-photo-signature",
+      "name": "JEE Main",
+      "category": "NTA",
+      "portal": "jeemain.nta.nic.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 10, "maxKB": 200, "targetKB": 80, "width": 413, "height": 531, "mode": "none", "notes": "3.5 x 4.5 cm. Some sources say max 300 KB; 200 is safe. Name file 'Photograph'." },
+        "signature": { "format": "jpg", "minKB": 10, "maxKB": 50, "targetKB": 25, "width": 413, "height": 177, "mode": "none", "notes": "3.5 x 1.5 cm. Sources split 10-100 vs 10-50 vs 4-50; 10-50 passes all. Name 'Signature'." }
+      },
+      "confidence": "verify"
+    },
+    {
+      "slug": "cuet-ug-photo-signature",
+      "name": "CUET UG",
+      "category": "NTA",
+      "portal": "cuet.nta.nic.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 10, "maxKB": 200, "targetKB": 80, "width": 413, "height": 531, "mode": "none", "notes": "White bg, 80% face incl. ears." },
+        "signature": { "format": "jpg", "minKB": 10, "maxKB": 30, "targetKB": 20, "width": 400, "height": 150, "mode": "none", "notes": "2026 bulletin 10-50 KB; older 4-30. 10-30 passes both." }
+      },
+      "confidence": "high"
+    },
+    {
+      "slug": "ctet-photo-signature",
+      "name": "CTET",
+      "category": "Teaching",
+      "portal": "ctet.nic.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 10, "maxKB": 100, "targetKB": 60, "width": 413, "height": 531, "mode": "none", "notes": "3.5 x 4.5 cm." },
+        "signature": { "format": "jpg", "minKB": 4, "maxKB": 30, "targetKB": 18, "width": 413, "height": 177, "mode": "none", "notes": "3.5 x 1.5 cm. 3-30 KB per Sep 2026 bulletin; 4-30 elsewhere." }
+      },
+      "confidence": "high"
+    },
+    {
+      "slug": "gate-photo-signature",
+      "name": "GATE 2027",
+      "category": "Engineering",
+      "portal": "gate2027.iitm.ac.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 5, "maxKB": 600, "targetKB": 150, "width": 480, "height": 640, "minWidth": 200, "minHeight": 260, "maxWidth": 530, "maxHeight": 690, "mode": "range", "notes": "Aspect 0.66-0.89, face 60-70% of frame." },
+        "signature": { "format": "jpg", "minKB": 3, "maxKB": 300, "targetKB": 60, "width": 540, "height": 160, "minWidth": 250, "minHeight": 80, "maxWidth": 580, "maxHeight": 180, "mode": "range", "notes": "Signature fills 70-80% of image. Black/dark blue ink." }
+      },
+      "confidence": "high",
+      "pageNote": "From official IIT Madras page. Update yearly - organising IIT changes."
+    },
+    {
+      "slug": "passport-photo-india",
+      "name": "Indian Passport (Passport Seva 2.0)",
+      "category": "ID",
+      "portal": "passportindia.gov.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 10, "maxKB": 250, "targetKB": 150, "width": 630, "height": 810, "mode": "exact", "notes": "Exactly 630x810, ICAO: white bg, face 80-85% of frame, no glasses, colour, unedited." }
+      },
+      "confidence": "high",
+      "pageNote": "630x810 confirmed on Indian embassy pages. Pixel-exact validator - your exact-px resizer is a real edge here."
+    },
+    {
+      "slug": "pan-card-nsdl-photo-signature",
+      "name": "PAN Card (Protean / NSDL)",
+      "category": "ID",
+      "portal": "onlineservices.proteantech.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 4, "maxKB": 20, "targetKB": 15, "width": 197, "height": 276, "dpi": 200, "mode": "preferred", "notes": "3.5 x 2.5 cm at 200 DPI, colour." },
+        "signature": { "format": "jpg", "minKB": 2, "maxKB": 10, "targetKB": 8, "width": 354, "height": 157, "dpi": 200, "mode": "preferred", "notes": "2 x 4.5 cm at 200 DPI." }
+      },
+      "confidence": "verify",
+      "pageNote": "Official tin.nsdl.com page says max 20 KB photo / 10 KB sign. Many blogs claim 50 KB or 10-200 KB. Using the official (strictest) numbers - safe either way."
+    },
+    {
+      "slug": "pan-card-uti-photo-signature",
+      "name": "PAN Card (UTIITSL)",
+      "category": "ID",
+      "portal": "utiitsl.com",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 4, "maxKB": 30, "targetKB": 20, "width": 213, "height": 213, "dpi": 300, "mode": "exact" },
+        "signature": { "format": "jpg", "minKB": 4, "maxKB": 30, "targetKB": 20, "width": 400, "height": 200, "mode": "preferred" }
+      },
+      "confidence": "verify",
+      "pageNote": "Only aggregator sources found. Check utiitsl.com before publishing."
+    },
+    {
+      "slug": "india-post-gds-photo-signature",
+      "name": "India Post GDS",
+      "category": "Postal",
+      "portal": "indiapostgdsonline.gov.in",
+      "docs": {
+        "photo": { "format": "jpg", "minKB": 30, "maxKB": 100, "targetKB": 60, "width": 320, "height": 400, "mode": "preferred", "notes": "4:5, 72-150 DPI, face 70-80%." },
+        "signature": { "format": "jpg", "minKB": 20, "maxKB": 100, "targetKB": 40, "width": 300, "height": 120, "mode": "preferred", "notes": "5:2. Min 20 KB - small sig files get rejected." }
+      },
+      "confidence": "high"
+    }
+  ]
+}

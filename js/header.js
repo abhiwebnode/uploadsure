@@ -25,6 +25,7 @@
         { href: "application-pack.html?portal=passport", icon: icon('<path d="M3 10h18M3 6h18M3 14h18M3 18h18"/>'),                                                                              title: "Passport Photo", desc: "India, US, UK, EU, Canada & more" },
         { href: "application-pack.html?portal=pan",      icon: icon('<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>'),                                 title: "PAN Card",       desc: "Protean / NSDL photo & signature" },
         { href: "application-pack.html?portal=kyc",      icon: icon('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'),                                      title: "Bank KYC",       desc: "Photo resize for bank verification" },
+        { href: "exam-photo-size.html", icon: icon('<path d="M5 12h14M12 5l7 7-7 7"/>'), title: "All Exams →", desc: "Photo & signature size for every exam" },
       ],
     },
     "image-tools.html": {
