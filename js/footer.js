@@ -65,6 +65,7 @@
     { href: "application-pack.html?portal=passport", label: "Passport Photo" },
     { href: "application-pack.html?portal=pan",      label: "PAN Card Photo" },
     { href: "application-pack.html?portal=kyc",      label: "Bank KYC Photo" },
+    { href: "exam-photo-size.html",                  label: "All Exam Sizes →" },
   ];
 
   /* ── Helper: render a column ── */

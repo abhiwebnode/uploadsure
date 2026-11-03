@@ -58,6 +58,29 @@ const SEARCH_INDEX = [
   { title: "Passport Photo — International",    page: "application-pack.html", category: "Portal", keywords: "passport photo international india us uk eu schengen canada australia china japan" },
   { title: "PAN Card — Protean / NSDL",         page: "application-pack.html", category: "Portal", keywords: "pan card protean nsdl photo signature" },
   { title: "Bank KYC",                          page: "application-pack.html", category: "Portal", keywords: "bank kyc photo id verification" },
+
+  /* ── EXAM PAGES (one page per exam) ──────────────────────── */
+  { title: "All Exams — Photo & Signature Size", page: "exam-photo-size.html", category: "Portal", keywords: "exam photo signature size kb pixels all exams list ssc upsc ibps sbi rrb neet jee cuet ctet gate pan passport india post" },
+  { title: "SSC CGL", page: "ssc-cgl-signature.html", category: "Portal", keywords: "ssc cgl signature photo size kb resize" },
+  { title: "SSC CHSL / MTS / GD", page: "ssc-chsl-signature.html", category: "Portal", keywords: "ssc chsl mts gd signature photo size kb resize" },
+  { title: "UPSC Civil Services (IAS)", page: "upsc-cse-photo-signature.html", category: "Portal", keywords: "upsc civil services ias cse photo signature size kb resize" },
+  { title: "UPSC NDA / CDS / CAPF", page: "upsc-nda-cds-photo-signature.html", category: "Portal", keywords: "upsc nda cds capf photo signature size kb resize" },
+  { title: "IBPS PO", page: "ibps-po-photo-signature.html", category: "Portal", keywords: "ibps po photo signature size kb resize" },
+  { title: "IBPS Clerk", page: "ibps-clerk-photo-signature.html", category: "Portal", keywords: "ibps clerk photo signature size kb resize" },
+  { title: "IBPS RRB (PO & Clerk)", page: "ibps-rrb-photo-signature.html", category: "Portal", keywords: "ibps rrb po clerk photo signature size kb resize" },
+  { title: "SBI PO", page: "sbi-po-photo-signature.html", category: "Portal", keywords: "sbi po photo signature size kb resize" },
+  { title: "SBI Clerk (Junior Associate)", page: "sbi-clerk-photo-signature.html", category: "Portal", keywords: "sbi clerk junior associate photo signature size kb resize" },
+  { title: "RBI Grade B", page: "rbi-grade-b-photo-signature.html", category: "Portal", keywords: "rbi grade b photo signature size kb resize" },
+  { title: "RRB NTPC / ALP / Technician / Group D", page: "rrb-ntpc-signature.html", category: "Portal", keywords: "rrb ntpc alp technician group d signature photo size kb resize" },
+  { title: "NEET UG", page: "neet-ug-photo-signature.html", category: "Portal", keywords: "neet ug photo signature size kb resize" },
+  { title: "JEE Main", page: "jee-main-photo-signature.html", category: "Portal", keywords: "jee main photo signature size kb resize" },
+  { title: "CUET UG", page: "cuet-ug-photo-signature.html", category: "Portal", keywords: "cuet ug photo signature size kb resize" },
+  { title: "CTET", page: "ctet-photo-signature.html", category: "Portal", keywords: "ctet photo signature size kb resize" },
+  { title: "GATE 2027", page: "gate-photo-signature.html", category: "Portal", keywords: "gate 2027 photo signature size kb resize" },
+  { title: "Indian Passport (Passport Seva 2.0)", page: "passport-photo-india.html", category: "Portal", keywords: "indian passport seva 2 0 photo india signature size kb resize" },
+  { title: "PAN Card (Protean / NSDL)", page: "pan-card-nsdl-photo-signature.html", category: "Portal", keywords: "pan card protean nsdl photo signature size kb resize" },
+  { title: "PAN Card (UTIITSL)", page: "pan-card-uti-photo-signature.html", category: "Portal", keywords: "pan card utiitsl uti photo signature size kb resize" },
+  { title: "India Post GDS", page: "india-post-gds-photo-signature.html", category: "Portal", keywords: "india post gds photo signature size kb resize" },
 ];
 
 /* ── CATEGORY COLOURS ── */
