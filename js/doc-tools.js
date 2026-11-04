@@ -535,9 +535,10 @@
     };
     bindDropZone(drop, input, addFiles);
 
-    // Camera buttons (shown on phones/tablets): capture="environment" opens
-    // the rear camera directly; each shot goes into the same queue.
-    document.querySelectorAll("#t-doc-scan .scan-camera input").forEach((cam) => {
+    // Phone/tablet buttons: "Scan with camera" (capture="environment" opens
+    // the rear camera directly) and "Choose from files" (gallery / files).
+    // Both feed the same queue as the desktop drop zone.
+    document.querySelectorAll("#t-doc-scan .scan-camera input, #t-doc-scan .scan-pick input").forEach((cam) => {
       cam.addEventListener("change", () => {
         if (cam.files && cam.files.length) addFiles(cam.files);
         cam.value = "";

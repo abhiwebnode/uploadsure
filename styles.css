@@ -1725,8 +1725,15 @@ header.scrolled {
 .spec-pdf-ic { width: 88px; height: 100px; display: grid; place-items: center; border-radius: 8px; border: 2px solid var(--border); background: var(--surface); font-family: var(--font-mono); font-weight: 800; color: var(--fail); }
 @media (max-width: 560px) { .spec-fixer { padding: 18px; } .spec-fields { grid-template-columns: 1fr 1fr; } }
 .ai-opt[hidden], .spec-hint[hidden] { display: none; }
-/* Document Scanner camera buttons — phones/tablets only */
-.scan-camera { display: none; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
-.scan-camera input { display: none; }
-#scanCameraBtn { width: 100%; margin-bottom: 12px; padding: 14px 18px; font-size: 15px; }
-@media (pointer: coarse) { .scan-camera { display: inline-flex; } }
+/* Document Scanner source buttons — phones/tablets get two separate
+   buttons (camera / files); desktop keeps the drag-and-drop zone. */
+.scan-camera, .scan-pick { display: none; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+.scan-camera input, .scan-pick input { display: none; }
+.scan-sources { display: none; }
+@media (pointer: coarse) {
+  .scan-camera, .scan-pick { display: inline-flex; }
+  .scan-sources { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 4px; }
+  .scan-sources .btn { flex-direction: column; gap: 6px; padding: 14px 10px; font-size: 14.5px; line-height: 1.25; text-align: center; }
+  .scan-sources .btn svg { width: 22px; height: 22px; }
+  #scanDrop.scan-dropzone { display: none; }
+}

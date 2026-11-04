@@ -45,14 +45,14 @@
     "ai-tools.html": {
       label: "AI",
       items: [
-        { href: "ai-tools.html#t-ai-bg",      icon: icon('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>'),                                      title: "Background Remover", desc: "Neural removal — hair, people, objects" },
-        { href: "ai-tools.html#t-ai-face",    icon: icon('<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>'),                                                  title: "Face Blur",          desc: "Auto-detects & blurs all faces" },
-        { href: "ai-tools.html#t-passport",   icon: icon('<rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="9" r="3"/><path d="M6 20c0-3 2.7-5 6-5s6 2 6 5"/>'),title: "Passport Photo",     desc: "9 country specs, auto background" },
-        { href: "ai-tools.html#t-obj-remove", icon: icon('<path d="M3 6h18M3 12h18M3 18h18"/>'),                                                                                     title: "Object Remover",     desc: "Paint & erase any object" },
-        { href: "ai-tools.html#t-composite",  icon: icon('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>'),      title: "Photo Composite",    desc: "Place yourself in any background" },
+        { href: "ai-tools.html#t-doc-scan",    icon: icon('<path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/>'),                                     title: "Document Scanner",   desc: "Phone photo → scanned PDF under a KB limit" },
         { href: "ai-tools.html#t-photo-check", icon: icon('<rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="9" r="3"/><path d="M6 20c0-3 2.7-5 6-5s6 2 6 5"/>'), title: "Photo Rejection Checker", desc: "Will your photo be rejected? Find out first" },
         { href: "ai-tools.html#t-sig-clean",   icon: icon('<path d="M3 17c3-1 4-8 7-8s1 7 4 7 3-4 4-4 2 2 3 2"/><path d="M3 21h18"/>'),                                    title: "Signature Cleaner",  desc: "Phone photo → clean signature on white" },
-        { href: "ai-tools.html#t-doc-scan",    icon: icon('<path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/>'),                                     title: "Document Scanner",   desc: "Phone photo → scanned PDF under a KB limit" },
+        { href: "ai-tools.html#t-ai-bg",      icon: icon('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>'),                                      title: "Background Remover", desc: "Neural removal — hair, people, objects" },
+        { href: "ai-tools.html#t-passport",   icon: icon('<rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="9" r="3"/><path d="M6 20c0-3 2.7-5 6-5s6 2 6 5"/>'),title: "Passport Photo",     desc: "9 country specs, auto background" },
+        { href: "ai-tools.html#t-ai-face",    icon: icon('<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>'),                                                  title: "Face Blur",          desc: "Auto-detects & blurs all faces" },
+        { href: "ai-tools.html#t-obj-remove", icon: icon('<path d="M3 6h18M3 12h18M3 18h18"/>'),                                                                                     title: "Object Remover",     desc: "Paint & erase any object" },
+        { href: "ai-tools.html#t-composite",  icon: icon('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>'),      title: "Photo Composite",    desc: "Place yourself in any background" },
       ],
     },
     "pdf-tools.html": {
