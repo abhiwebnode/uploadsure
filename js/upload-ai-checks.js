@@ -753,6 +753,7 @@
   }
 
   window.UploadSureAI = {
+    estimatePaper,
     checkPhotoForRejection,
     renderPhotoCheck,
     cleanSignatureImage,

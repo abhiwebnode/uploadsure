@@ -56,6 +56,7 @@
     { href: "ai-tools.html#t-composite",  label: "Photo Composite" },
     { href: "ai-tools.html#t-photo-check", label: "Photo Rejection Checker" },
     { href: "ai-tools.html#t-sig-clean",   label: "Signature Cleaner" },
+    { href: "ai-tools.html#t-doc-scan",    label: "Document Scanner" },
   ];
 
   const PORTAL_LINKS = [

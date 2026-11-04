@@ -165,6 +165,9 @@
       resultEl.innerHTML = renderDiagnoses(scored.slice(0, 3), text, portal);
     }
 
+    // If the message states sizes / formats, offer to fix the file right here.
+    if (window.UploadSureDocs) window.UploadSureDocs.mountSpecFixer(resultEl, text);
+
     resultEl.classList.add("show");
     resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }

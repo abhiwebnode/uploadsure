@@ -52,6 +52,7 @@
         { href: "ai-tools.html#t-composite",  icon: icon('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>'),      title: "Photo Composite",    desc: "Place yourself in any background" },
         { href: "ai-tools.html#t-photo-check", icon: icon('<rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="9" r="3"/><path d="M6 20c0-3 2.7-5 6-5s6 2 6 5"/>'), title: "Photo Rejection Checker", desc: "Will your photo be rejected? Find out first" },
         { href: "ai-tools.html#t-sig-clean",   icon: icon('<path d="M3 17c3-1 4-8 7-8s1 7 4 7 3-4 4-4 2 2 3 2"/><path d="M3 21h18"/>'),                                    title: "Signature Cleaner",  desc: "Phone photo → clean signature on white" },
+        { href: "ai-tools.html#t-doc-scan",    icon: icon('<path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/>'),                                     title: "Document Scanner",   desc: "Phone photo → scanned PDF under a KB limit" },
       ],
     },
     "pdf-tools.html": {

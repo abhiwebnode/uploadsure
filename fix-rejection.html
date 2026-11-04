@@ -144,7 +144,7 @@
       </label>
 
       <textarea id="rejectionInput" class="fix-textarea" rows="5"
-        placeholder="Example: 'Uploaded photograph is not clear' or 'Signature file size exceeds 20 KB'"></textarea>
+        placeholder="Example: 'Uploaded photograph is not clear' or 'Signature file size exceeds 20 KB'. If the message (or the form's instructions) gives sizes — like '20 KB to 50 KB, 200 x 230 pixels' — paste them too and we'll fix the file right here."></textarea>
 
       <div class="fix-portal-row">
         <label class="fix-label-inline" for="portalSelect">Portal (optional)</label>
@@ -178,6 +178,7 @@
         <button class="chip" data-pick="dimensions incorrect">Dimensions incorrect</button>
         <button class="chip" data-pick="file corrupted">File corrupted</button>
         <button class="chip" data-pick="face not visible">Face not visible</button>
+        <button class="chip" data-pick="Photo size should be between 20 KB and 50 KB, 200 x 230 pixels, JPG only">Size must be 20–50 KB</button>
       </div>
     </div>
 
@@ -258,11 +259,19 @@
 <div id="site-footer"></div>
 <script src="js/footer.js"></script>
 
+<div id="toast" role="status" aria-live="polite"></div>
 <script src="js/utils.js"></script>
+<script src="js/worker-client.js"></script>
 <script src="js/sticky-header.js"></script>
 <script src="js/search.js"></script>
 <script src="js/pwa-install.js"></script>
+<script src="js/doc-tools.js"></script>
 <script src="js/fix-rejection.js"></script>
+<script>
+initThemeToggle();
+initPwaInstall();
+initScrollToTop();
+</script>
 
 </body>
 </html>
