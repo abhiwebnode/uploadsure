@@ -177,6 +177,8 @@
       <a href="#t-passport">Passport Photo</a>
       <a href="#t-obj-remove">Object Remover</a>
       <a href="#t-composite">Photo Composite</a>
+      <a href="#t-photo-check">Photo Rejection Checker</a>
+      <a href="#t-sig-clean">Signature Cleaner</a>
     </div>
 <h2 class="sr-only">Our AI Utilities</h2>
     <div class="tools">
@@ -244,6 +246,44 @@
         <label class="mini-drop" id="objRemoveDrop">Drop or choose an image<input type="file" id="objRemoveFile" accept="image/*"></label>
         <canvas id="objRemoveCanvas" style="display:none;max-width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);touch-action:none"></canvas>
         <div class="tool-out" id="objRemoveOut"></div>
+      </div>
+
+      <!-- ── Photo Rejection Checker ── -->
+      <div class="card tool" id="t-photo-check">
+        <div class="tool-head">
+          <span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="9" r="3"/><path d="M6 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M15 3.5l2 2 3.5-3.5"/></svg></span>
+          <h3>Photo Rejection Checker</h3><span class="tag">New</span>
+        </div>
+        <p class="desc">Find out if your exam or form photo will be rejected — before you upload. Checks face size and position, blur, lighting, shadows, background and colour, and tells you exactly what to fix.</p>
+        <p class="note-inline" id="photoCheckStatus"></p>
+        <label class="mini-drop" id="photoCheckDrop">Drop or choose your photo<input type="file" id="photoCheckFile" accept="image/*"></label>
+        <div class="ai-check-out" id="photoCheckOut"></div>
+      </div>
+
+      <!-- ── Signature & Thumb Cleaner ── -->
+      <div class="card tool" id="t-sig-clean">
+        <div class="tool-head">
+          <span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c3-1 4-8 7-8s1 7 4 7 3-4 4-4 2 2 3 2"/><path d="M3 21h18"/></svg></span>
+          <h3>Signature &amp; Thumb Cleaner</h3><span class="tag">New</span>
+        </div>
+        <p class="desc">Photographed your signature or thumb impression on paper? This removes shadows and paper texture, makes the ink dark and the background pure white, and crops it to the size portals want.</p>
+        <div class="controls">
+          <div class="field">
+            <label>Output</label>
+            <select id="sigCleanPreset" style="font-family:var(--font-body);font-size:13px;padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text)">
+              <option value="sig-140x60">Signature 140×60 — SSC, IBPS, SBI, RRB</option>
+              <option value="sig-350x150">Signature 350×150 — UPSC</option>
+              <option value="thumb-240">Thumb impression 240×240</option>
+              <option value="tight">Tight crop (any size)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Ink colour</label>
+            <div class="seg" id="sigCleanInk"><button data-ink="auto" class="on">Auto</button><button data-ink="black">Black</button><button data-ink="blue">Blue</button></div>
+          </div>
+        </div>
+        <label class="mini-drop" id="sigCleanDrop">Drop or choose a photo of your signature<input type="file" id="sigCleanFile" accept="image/*"></label>
+        <div class="tool-out" id="sigCleanOut"></div>
       </div>
 
       <!-- ── Photo Composite ── -->
@@ -429,6 +469,7 @@
 <script src="js/pwa-install.js"></script>
 <script src="js/worker-client.js"></script>
 <script src="js/image-ai-tools.js"></script>
+<script src="js/upload-ai-checks.js"></script>
 <script>
 initThemeToggle();
 initPwaInstall();
@@ -438,6 +479,8 @@ initFaceBlurAiTool();
 initPassportPhotoTool();
 initObjectRemoverTool();
 initPhotoCompositeTool();
+UploadSureAI.initPhotoCheckerTool();
+UploadSureAI.initSignatureCleanerTool();
 </script>
 <script src="js/search.js"></script>
 <script src="js/sticky-header.js"></script>

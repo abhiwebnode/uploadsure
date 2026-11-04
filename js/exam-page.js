@@ -14,6 +14,13 @@
     segments are ignored by every decoder, pixels are untouched.
   - Caps at 95% of maxKB so it passes portals that count 1 KB = 1000 bytes.
 
+  AI add-ons (js/upload-ai-checks.js, lazy-loaded only when used):
+  - Signature / thumb / declaration: "Clean up paper & shadows" (on by
+    default) turns a phone photo of ink on paper into clean ink on white
+    before it is fitted to spec.
+  - Photo: "Check for rejection reasons" runs the face-based checker on
+    exactly the area that will be uploaded.
+
   Depends on: utils.js, worker-client.js
 */
 
@@ -40,8 +47,47 @@ async function padJpegToSize(blob, targetBytes) {
   return new Blob([src.slice(0, 2), ...segments, src.slice(2)], { type: "image/jpeg" });
 }
 
-async function fixToSpec(image, doc) {
-  const canvas = coverCropToCanvas(image, doc.width, doc.height);
+const INK_DOCS = new Set(["signature", "thumb", "declaration"]);
+let uploadAiPromise = null;
+
+function loadUploadAI() {
+  if (window.UploadSureAI) return Promise.resolve(window.UploadSureAI);
+  if (!uploadAiPromise) {
+    uploadAiPromise = new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = "js/upload-ai-checks.js";
+      s.onload = () => resolve(window.UploadSureAI);
+      s.onerror = () => { uploadAiPromise = null; reject(new Error("Could not load the AI tools")); };
+      document.head.appendChild(s);
+    });
+  }
+  return uploadAiPromise;
+}
+
+/* The exact area of `image` that coverCropToCanvas keeps, at up to
+   maxSide px — so the photo check sees what will actually be uploaded. */
+function coverCropRegion(image, width, height, maxSide) {
+  const iw = image.width, ih = image.height;
+  const scale = Math.max(width / iw, height / ih);
+  const cw = width / scale, ch = height / scale;
+  const k = Math.min(1, maxSide / Math.max(cw, ch));
+  const out = document.createElement("canvas");
+  out.width = Math.max(1, Math.round(cw * k));
+  out.height = Math.max(1, Math.round(ch * k));
+  const ctx = out.getContext("2d");
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(image, (iw - cw) / 2, (ih - ch) / 2, cw, ch, 0, 0, out.width, out.height);
+  return out;
+}
+
+async function fixToSpec(image, doc, clean) {
+  let source = image, cleaned = null;
+  if (clean) {
+    const AI = await loadUploadAI();
+    cleaned = AI.cleanSignatureImage(image, { aspect: doc.width / doc.height });
+    if (!cleaned.noInk) source = cleaned.canvas;
+  }
+  const canvas = coverCropToCanvas(source, doc.width, doc.height);
   const bitmap = await createImageBitmap(canvas);
   const capKB = doc.maxKB * 0.95;
   let { blob } = await workerCompressFixedDimensions(bitmap, "image/jpeg", capKB);
@@ -50,7 +96,34 @@ async function fixToSpec(image, doc) {
     const target = Math.min(doc.targetKB * KB, capKB * KB);
     blob = await padJpegToSize(blob, Math.max(target, doc.minKB * KB * 1.05));
   }
-  return { blob, canvas };
+  return { blob, canvas, cleaned };
+}
+
+/* The AI check measures the background properly (around the detected
+   face); the quick corner sample can be fooled by hair at the edge. Once
+   the AI result is in, it replaces the quick Background row and the
+   banner/stamp are recomputed. */
+function syncBackgroundRow(resultEl, aiResult) {
+  const row = resultEl.querySelector('.checklist [data-check="bg"]');
+  const aiBg = aiResult.checks.find((c) => c.label === "Background");
+  if (!row || !aiBg) return;
+  const ok = aiBg.status === "ok";
+  row.className = "check " + (ok ? "ok" : aiBg.status === "bad" ? "bad" : "warn");
+  row.querySelector(".ic").innerHTML = ok ? checkmarkIcon() : warningIcon();
+  row.querySelector(".val").textContent = aiBg.value + " (AI check)";
+  const allOk = !resultEl.querySelector(".checklist .check:not(.ok)");
+  const banner = resultEl.querySelector(".rfg-summary");
+  const stamp = resultEl.querySelector(".preview-stamp");
+  if (banner) {
+    banner.classList.toggle("rfg-pass", allOk);
+    banner.classList.toggle("rfg-warn", !allOk);
+    banner.querySelector(".rfg-title").textContent = allOk ? banner.dataset.passText : "Check the flagged item before uploading";
+  }
+  if (stamp) {
+    stamp.classList.toggle("pass", allOk);
+    stamp.classList.toggle("warn", !allOk);
+    stamp.textContent = allOk ? "Pass" : "Recheck";
+  }
 }
 
 function initExamPage() {
@@ -69,6 +142,9 @@ function initExamPage() {
         <h3>${doc.label}</h3>
         <span class="req">${doc.width}×${doc.height}px · ${doc.minKB}–${doc.maxKB}KB · JPG</span>
       </div>
+      ${INK_DOCS.has(key) ? `
+      <label class="ai-opt"><input type="checkbox" class="ai-clean" checked>
+        <span><b>Clean up paper &amp; shadows</b> — pure white background, darker ink. Turn off if you already have a clean scan.</span></label>` : ""}
       <label class="drop">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
@@ -79,15 +155,19 @@ function initExamPage() {
       </label>
       <div class="result"></div>`;
 
-    const input = el.querySelector("input");
+    const input = el.querySelector('.drop input[type="file"]');
     const drop = el.querySelector(".drop");
     const result = el.querySelector(".result");
+    const cleanBox = el.querySelector(".ai-clean");
+    let lastFile = null;
+    if (cleanBox) cleanBox.addEventListener("change", () => { if (lastFile) handle(lastFile); });
 
-    bindDropZone(drop, input, async (file) => {
+    const handle = async (file) => {
+      lastFile = file;
       drop.querySelector(".t").textContent = "Processing…";
       try {
         const image = await loadImageFromFile(file);
-        const { blob, canvas } = await fixToSpec(image, doc);
+        const { blob, canvas, cleaned } = await fixToSpec(image, doc, !!(cleanBox && cleanBox.checked));
         const sizeKB = +formatKilobytes(blob.size);
         const inBand = blob.size >= doc.minKB * KB && blob.size <= doc.maxKB * 1000;
 
@@ -96,9 +176,14 @@ function initExamPage() {
           { ok: true, label: "Format", value: "<b>JPG</b>" },
           { ok: inBand, label: "File size", value: `<b>${sizeKB} KB</b> ${inBand ? "within" : "vs"} ${doc.minKB}–${doc.maxKB} KB` },
         ];
+        if (cleaned) {
+          if (cleaned.noInk) checks.push({ ok: false, label: "Clean-up", value: "no clear ink found — used your photo as is" });
+          else checks.push({ ok: true, label: "Clean-up", value: `paper &amp; shadows removed · ${cleaned.ink} ink` });
+          cleaned.warnings.filter((w) => !cleaned.noInk).forEach((w) => checks.push({ ok: false, label: "Ink", value: w }));
+        }
         if (doc.isPhoto) {
           const bg = sampleBorderForPlainBackground(canvas);
-          checks.push({ ok: bg.isPlain && bg.isLight, label: "Background",
+          checks.push({ ok: bg.isPlain && bg.isLight, label: "Background", id: "bg",
             value: bg.isPlain && bg.isLight ? "looks plain & light" : "may not be plain — check" });
         }
         const allOk = checks.every((c) => c.ok);
@@ -106,7 +191,7 @@ function initExamPage() {
         const url = URL.createObjectURL(blob);
 
         result.innerHTML = `
-          <div class="rfg-summary ${allOk ? "rfg-pass" : "rfg-warn"}">
+          <div class="rfg-summary ${allOk ? "rfg-pass" : "rfg-warn"}" data-pass-text="Ready for ${exam.name}">
             <div class="rfg-content"><strong class="rfg-title">${allOk
               ? `Ready for ${exam.name}`
               : "Check the flagged item before uploading"}</strong></div>
@@ -115,13 +200,19 @@ function initExamPage() {
             <div class="preview-thumb"><img src="${url}" alt="fixed ${doc.label}">
               <span class="stamp sm preview-stamp ${allOk ? "pass" : "warn"}">${allOk ? "Pass" : "Recheck"}</span></div>
             <ul class="checklist">${checks.map((c) => `
-              <li class="check ${c.ok ? "ok" : "warn"}"><span class="ic">${c.ok ? checkmarkIcon() : warningIcon()}</span>
+              <li class="check ${c.ok ? "ok" : "warn"}"${c.id ? ` data-check="${c.id}"` : ""}><span class="ic">${c.ok ? checkmarkIcon() : warningIcon()}</span>
               <span><span class="lbl">${c.label}</span> — <span class="val">${c.value}</span></span></li>`).join("")}</ul>
           </div>
           <div class="act-row">
             <button class="btn primary dl">Download ${doc.label.toLowerCase()}</button>
             <span class="note-inline">${filename}</span>
           </div>
+          ${doc.isPhoto ? `
+          <div class="ai-check-slot">
+            <button class="btn sm ai-check-btn">Check for rejection reasons</button>
+            <span class="note-inline">AI face check · runs on your device · one-time ~4 MB download</span>
+            <div class="ai-check-out"></div>
+          </div>` : ""}
           <div class="rfg-help">Portal rejected it? <a href="fix-rejection.html">Fix the rejection →</a></div>`;
         result.classList.add("show");
         result.querySelector(".dl").onclick = () => {
@@ -129,12 +220,34 @@ function initExamPage() {
           showToast("Downloaded — upload this one");
           if (typeof gtag === "function") gtag("event", "exam_download", { exam: exam.slug, doc: key });
         };
+        const aiBtn = result.querySelector(".ai-check-btn");
+        if (aiBtn) {
+          const aiOut = result.querySelector(".ai-check-out");
+          const aiNote = result.querySelector(".ai-check-slot .note-inline");
+          aiBtn.onclick = async () => {
+            aiBtn.disabled = true;
+            try {
+              const AI = await loadUploadAI();
+              const region = coverCropRegion(image, doc.width, doc.height, 900);
+              const res = await AI.checkPhotoForRejection(region, { onStatus: (t) => (aiNote.textContent = t) });
+              aiBtn.remove();
+              aiNote.remove();
+              AI.renderPhotoCheck(res, aiOut);
+              syncBackgroundRow(result, res);
+              if (typeof gtag === "function") gtag("event", "exam_photo_check", { exam: exam.slug, verdict: res.verdict });
+            } catch (err) {
+              aiBtn.disabled = false;
+              aiNote.textContent = "Couldn't run the check: " + err.message;
+            }
+          };
+        }
         drop.querySelector(".t").textContent = `Replace ${doc.label.toLowerCase()}`;
       } catch (e) {
         drop.querySelector(".t").textContent = `Drop your ${doc.label.toLowerCase()} here`;
         showToast("Could not read that file — try a JPG or PNG");
       }
-    });
+    };
+    bindDropZone(drop, input, handle);
 
     body.appendChild(el);
   });

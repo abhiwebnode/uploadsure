@@ -54,6 +54,8 @@
     { href: "ai-tools.html#t-passport",   label: "Passport Photo" },
     { href: "ai-tools.html#t-obj-remove", label: "Object Remover" },
     { href: "ai-tools.html#t-composite",  label: "Photo Composite" },
+    { href: "ai-tools.html#t-photo-check", label: "Photo Rejection Checker" },
+    { href: "ai-tools.html#t-sig-clean",   label: "Signature Cleaner" },
   ];
 
   const PORTAL_LINKS = [

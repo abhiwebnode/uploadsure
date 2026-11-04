@@ -48,6 +48,8 @@ const SEARCH_INDEX = [
   { title: "Passport & ID Photo Maker",page: "ai-tools.html#t-passport",    category: "AI",     keywords: "passport photo id maker country spec india us uk eu canada australia japan background" },
   { title: "Object Remover",           page: "ai-tools.html#t-obj-remove",  category: "AI",     keywords: "object remove erase inpaint brush opencv fill background" },
   { title: "Photo Composite",          page: "ai-tools.html#t-composite",   category: "AI",     keywords: "photo composite place person background scene drag resize handles" },
+  { title: "Photo Rejection Checker",  page: "ai-tools.html#t-photo-check", category: "AI",     keywords: "photo rejected check verify face size blur shadow background exam form upload rejection reason checker" },
+  { title: "Signature & Thumb Cleaner", page: "ai-tools.html#t-sig-clean",  category: "AI",     keywords: "signature clean white background shadow scan photo paper thumb impression left thumb ink darken crop 140x60" },
 
   /* ── APPLICATION PACK — PORTALS ───────────────────────────── */
   { title: "SSC — CGL, CHSL, MTS, GD",         page: "application-pack.html", category: "Portal", keywords: "ssc cgl chsl mts gd photo signature size 200x230 20kb 50kb jpg" },

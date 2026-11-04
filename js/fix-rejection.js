@@ -23,7 +23,7 @@
       title: "Photo isn't clear enough",
       cause: "The portal's automated check found the image blurry, pixelated, or too heavily compressed. This happens when you compress the file too aggressively (near the minimum KB) or use a low-resolution original.",
       fix: "Use a sharp original photo — don't crop from a group photo. When compressing, target the middle-to-high end of the KB range (e.g. 40 KB out of a 20–50 KB range, not 20 KB).",
-      tool: { href: "application-pack.html", label: "Open Application Pack" },
+      tool: { href: "ai-tools.html#t-photo-check", label: "Check my photo" },
       confidence: 3,
     },
     {
@@ -95,7 +95,7 @@
       title: "Face isn't clearly visible",
       cause: "Face is too small, cropped, angled, covered, or lighting hides features. Some portals now use automatic face detection.",
       fix: "Take a fresh photo: face centred, occupies 60–70% of the frame, plain background, even natural lighting, eyes open, no glasses glare, no smile.",
-      tool: { href: "application-pack.html", label: "Open Application Pack" },
+      tool: { href: "ai-tools.html#t-photo-check", label: "Check my photo" },
       confidence: 2,
     },
     {
@@ -104,7 +104,7 @@
       title: "Signature isn't clear",
       cause: "The signature scan is too faint, faded, or the ink is too light. Portals want dark, high-contrast signatures.",
       fix: "Sign fresh on plain white paper with a bold black or blue pen. Scan or photograph in bright light. Re-run through Application Pack.",
-      tool: { href: "application-pack.html", label: "Open Application Pack" },
+      tool: { href: "ai-tools.html#t-sig-clean", label: "Open Signature Cleaner" },
       confidence: 2,
     },
   ];

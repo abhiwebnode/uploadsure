@@ -1667,3 +1667,31 @@ header.scrolled {
 .exam-card small { font-size: 12px; color: var(--text-muted); }
 #specs h2, #how h2, #related h2 { font-size: 22px; margin-bottom: 14px; }
 @media (max-width: 720px) { .pack-body { grid-template-columns: 1fr; } .pack-item { border-right: 0; border-bottom: 1px solid var(--border); } }
+
+/* ═══════════════════════════════════════════════
+   AI UPLOAD CHECKS (js/upload-ai-checks.js)
+═══════════════════════════════════════════════ */
+.ai-check-out:empty { display: none; }
+.ai-check-out { margin-top: 16px; }
+.ai-check-body { display: flex; gap: 16px; align-items: flex-start; margin-top: 12px; }
+.ai-check-preview canvas { display: block; max-width: 200px; border-radius: 8px; border: 2px solid var(--border); }
+.ai-check-body .checklist { gap: 8px; }
+.ai-check-body .check { font-size: 13.5px; padding: 8px 12px; }
+.ai-tip { display: block; font-size: 12.5px; color: var(--text-muted); margin-top: 4px; font-weight: 400; }
+.ai-disclaimer { font-size: 12px; color: var(--text-faint); margin: 10px 0 0; }
+.ai-next { font-size: 13px; margin: 12px 0 0; }
+.ai-warn { font-size: 13px; color: var(--warn); margin: 8px 0 0; font-weight: 600; }
+.ai-check-slot { margin: 14px 0 6px; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.ai-check-slot .ai-check-out { flex: 1 1 100%; margin-top: 4px; }
+.ai-opt { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text-muted); margin: 0 0 12px; cursor: pointer; }
+.ai-opt input { margin-top: 2px; accent-color: var(--ink); width: 16px; height: 16px; flex: 0 0 auto; }
+.ai-opt b { color: var(--text); }
+.sig-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+.sig-compare figure { margin: 0; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px; }
+.sig-compare img { width: 100%; height: 110px; object-fit: contain; display: block; background: #fff; border-radius: 4px; }
+.sig-compare figcaption { font-size: 11.5px; color: var(--text-muted); margin-top: 6px; font-weight: 600; }
+@media (max-width: 560px) {
+  .ai-check-body { flex-direction: column; }
+  .ai-check-preview canvas { max-width: 160px; }
+  .sig-compare { grid-template-columns: 1fr; }
+}
