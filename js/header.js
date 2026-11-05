@@ -150,6 +150,7 @@
   ══════════════════════════════════════════════ */
   const isMobile = () => window.innerWidth <= 820;
   let closeTimer = null;
+  let hoverBlocked = null;   // group whose hover-open is paused after a click
 
   function openGroup(group) {
     closeAllGroups();
@@ -187,19 +188,39 @@
           openGroup(group);
         }
         // If already open, DO NOT prevent default. The browser will navigate to the page!
+        else closeAllGroups();
+      } else {
+        // Desktop: navigate as normal, but close the panel (it would stay
+        // open if this is the page we're already on).
+        hoverBlocked = group;
+        closeAllGroups();
       }
-      // On desktop, DO NOT prevent default. The browser will instantly navigate!
     });
 
     /* ── Desktop: mouse-enter to open, mouse-leave with delay ── */
     group.addEventListener("mouseenter", () => {
-      if (isMobile()) return;
+      if (isMobile() || hoverBlocked === group) return;
       clearTimeout(closeTimer);
       openGroup(group); // Open menu on hover for desktop users
     });
     group.addEventListener("mouseleave", () => {
+      if (hoverBlocked === group) hoverBlocked = null; // re-arm hover once the pointer leaves
       if (isMobile()) return;
       closeTimer = setTimeout(() => closeGroup(group), 200);
+    });
+
+    /* ── Picking an item closes the menu ──
+       Matters for links on the current page (e.g. ai-tools.html#t-doc-scan
+       while already on ai-tools.html): the browser only scrolls, so without
+       this the menu / bottom sheet stayed open. Hover is paused until the
+       pointer leaves, so it doesn't instantly reopen under the cursor. */
+    panel.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        clearTimeout(closeTimer);
+        hoverBlocked = group;
+        closeAllGroups();
+        link.blur();
+      });
     });
     panel.addEventListener("mouseenter", () => {
       if (isMobile()) return;
@@ -225,6 +246,11 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") closeAllGroups();
   });
+
+  /* Jumping to a section, or coming back with the Back button (the page is
+     restored from the back/forward cache with the menu still open). */
+  window.addEventListener("hashchange", closeAllGroups);
+  window.addEventListener("pageshow", e => { if (e.persisted) closeAllGroups(); });
 
   /* ══════════════════════════════════════════════
      SEARCH ICON EXPAND/COLLAPSE
